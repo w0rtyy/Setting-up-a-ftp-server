@@ -23,38 +23,38 @@ Before setting up the FTP server, ensure you have:
 vsftpd is a widely used FTP server for Unix-based systems.
 3.1 Updating System Package, installing vsftpd and enabling
 ```   
-  sudo apt update && sudo apt upgrade -y
-  sudo apt install vsftpd -y
-  sudo systemctl start vsftpd
-  sudo systemctl enable vsftpd
+	  sudo apt update && sudo apt upgrade -y
+	  sudo apt install vsftpd -y
+	  sudo systemctl start vsftpd
+	  sudo systemctl enable vsftpd
 ```
 
 To verify the service status:
 ```
-  sudo systemctl status vsftpd
+  	sudo systemctl status vsftpd
 ```
 
 4. Configuring vsftpd
 To ensure proper security and functionality, modify the vsftpd configuration file.
 4.1 Open vsftpd Configuration File
 ```
-sudo nano /etc/vsftpd.conf
+	sudo nano /etc/vsftpd.conf
 ```
 4.2 Modify/Add These Settings
 ```
-  anonymous_enable=NO      # Disable anonymous access
-  local_enable=YES         # Allow local users to log in
-  write_enable=YES         # Enable write permissions
-  chroot_local_user=YES    # Restrict users to home directories
-  allow_writeable_chroot=YES
-  pasv_enable=YES          # Enable Passive Mode
-  pasv_min_port=40000
-  pasv_max_port=50000
-  Save and exit (CTRL + X, then Y, then Enter).
+	  anonymous_enable=NO      # Disable anonymous access
+	  local_enable=YES         # Allow local users to log in
+	  write_enable=YES         # Enable write permissions
+	  chroot_local_user=YES    # Restrict users to home directories
+	  allow_writeable_chroot=YES
+	  pasv_enable=YES          # Enable Passive Mode
+	  pasv_min_port=40000
+	  pasv_max_port=50000
+	  Save and exit (CTRL + X, then Y, then Enter).
 ```
 4.3 Restart vsftpd Service
 ```
-  sudo systemctl restart vsftpd
+  	sudo systemctl restart vsftpd
 ```
 
 5. Creating an FTP User
@@ -62,27 +62,27 @@ To allow authenticated FTP access, create a dedicated user.
 
 5.1 Create a New FTP User
 ```
-  sudo adduser ftpuser
+  	sudo adduser username
 ```
 Follow the prompts to set a password.
 5.2 Assign Permissions
 ```
-  sudo mkdir -p /home/ftpuser/ftp
-  sudo chown ftpuser:ftpuser /home/ftpuser/ftp
-  sudo chmod 750 /home/ftpuser/ftp
+	  sudo mkdir -p /home/username/ftp
+	  sudo chown ftpuser:ftpuser /home/username/ftp
+	  sudo chmod 750 /home/username/ftp
 ```
 
 6. Configuring Firewall for FTP
 If UFW (Uncomplicated Firewall) is enabled, allow FTP traffic.
 6.1 Allow FTP Ports
 ```
-  sudo ufw allow 21/tcp
-  sudo ufw allow 40000:50000/tcp
-  sudo ufw reload  
+	  sudo ufw allow 21/tcp
+	  sudo ufw allow 40000:50000/tcp
+	  sudo ufw reload  
 ```
 6.2 Verify Firewall Status
 ```
-  sudo ufw status
+	  sudo ufw status
 ```
 
 7. Finding the Server IP Address
@@ -105,16 +105,16 @@ Once the server is configured, test it using a client machine.
 Here we have in step 4 we have altered the vsftpd.conf file to enable pasv mode. Since that is enabled we can only access the data with no writing availiblity
 If we want to have writing avaliblity, Connect using:
 ```
-  lftp username@ip_address
+	lftp username@ip_address
 ```
 Enter the username and password when prompted.
 8.2 FTP Commands to Verify Connection
 ```
-  ls       # List files
-  pwd      # Show current directory
-  put file.txt   # Upload file
-  get file.txt   # Download file
-  bye      # Exit FTP
+	  ls       # List files
+	  pwd      # Show current directory
+	  put file.txt   # Upload file
+	  get file.txt   # Download file
+	  bye      # Exit FTP
 ```
 8.3 Access via File Manager (GUI)
 •Ubuntu/macOS: Open Files (Nautilus) → Ctrl + L → enter ftp://ip_address.
@@ -129,12 +129,12 @@ If you need to stop or disable the FTP service:
 ```
 9.2 Disable FTP on Startup (Permanent)
 ```
-  sudo systemctl disable vsftpd
+  	sudo systemctl disable vsftpd
 ```
 9.3 Uninstall vsftpd (If No Longer Needed)
 ```
-  sudo apt remove vsftpd -y
-  sudo apt purge vsftpd -y
+	  sudo apt remove vsftpd -y
+	  sudo apt purge vsftpd -y
 ``` 
 
 Additional Security (SFTP Recommended)
@@ -145,7 +145,7 @@ This method encrypts file transfers, improving security significantly.
 
 During errors or any trouble connecting to the server, we can see the **log** maintained by the vsftpd. 
 ```
-  sudo nano /etc/vsftpd.co
+  	sudo nano /etc/vsftpd.co
 ```
  
 Conclusion
