@@ -13,9 +13,11 @@ File Transfer Protocol (FTP) is a standard network protocol used to transfer fil
 2. Prerequisites
 Before setting up the FTP server, ensure you have:
 
-•	A system running Ubuntu 24.04 (GUI or CLI).
-•	Sudo/root access.
-•	A stable network connection.
+•A system running Ubuntu 24.04 (GUI or CLI).
+
+•Sudo/root access.
+
+•A stable network connection.
 
 3. Installing vsftpd (Very Secure FTP Daemon)
 vsftpd is a widely used FTP server for Unix-based systems.
@@ -115,8 +117,9 @@ Enter the username and password when prompted.
   bye      # Exit FTP
 ```
 8.3 Access via File Manager (GUI)
-•	Ubuntu/macOS: Open Files (Nautilus) → Ctrl + L → enter ftp://ip_address.
-•	Windows: Open File Explorer → type ftp://ip_address in the address bar.
+•Ubuntu/macOS: Open Files (Nautilus) → Ctrl + L → enter ftp://ip_address.
+
+•Windows: Open File Explorer → type ftp://ip_address in the address bar.
  
 9. Stopping or Disabling the FTP Server
 If you need to stop or disable the FTP service:
